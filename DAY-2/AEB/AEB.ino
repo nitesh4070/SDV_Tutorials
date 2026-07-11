@@ -25,7 +25,7 @@ void setup()
     CAN0.setMode(MCP_NORMAL);
 
     Serial.println("AEB ECU Ready");
-    Serial.println("Type Vehicle Speed and Press ENTER");
+    Serial.println("Type Vehicle Speed and Press ENTER");  // setting the vehilce speed. you feel like you are manually simulating it.
 }
 
 void loop()
@@ -39,7 +39,7 @@ void loop()
         {
             int newSpeed = inputBuffer.toInt();
 
-            // Only update if valid positive number
+            // if the correct spped value is entered then only it will update
             if(newSpeed > 0)
             {
                 vehicleSpeed = newSpeed;
@@ -56,7 +56,7 @@ void loop()
         }
     }
 
-    // -------- RECEIVE TRAFFIC SIGN --------
+    // -------- RECEIVE TRAFFIC SIGN --------  /this can be simulated later with camera's inputs
     if(CAN0.checkReceive() == CAN_MSGAVAIL)
     {
         CAN0.readMsgBuf(&rxId, &len, rxBuf);

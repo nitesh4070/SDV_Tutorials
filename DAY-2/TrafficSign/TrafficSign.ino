@@ -25,7 +25,7 @@ void setup()
 
 void loop()
 {
-    // Read serial input safely
+    // Reading serial input 
     while (Serial.available())
     {
         char c = Serial.read();
@@ -45,10 +45,10 @@ void loop()
         }
     }
 
-    // Prepare CAN Data
+    // Preparing CAN Data
     byte data[8] = {speedLimit, 0,0,0,0,0,0,0};
 
-    // Send CAN Message
+    // Sending CAN Message
     byte result = CAN0.sendMsgBuf(0x100, 0, 8, data);
 
     if(result == CAN_OK)
